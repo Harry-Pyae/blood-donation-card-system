@@ -1,0 +1,85 @@
+services:
+  app:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    container_name: blood-donation-app
+    restart: unless-stopped
+    working_dir: /var/www/html
+
+    command:
+    - php
+    - artisan
+    - serve
+    - --host=0.0.0.0
+    - --port=8000
+    - --no-reload
+
+    ports:
+      - "8001:8000"
+
+    volumes:
+      - ./backend:/var/www/html
+      - blood_donation_vendor:/var/www/html/vendor
+
+    environment:
+      APP_ENV: local
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: ${MYSQL_DATABASE}
+      DB_USERNAME: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      PHP_CLI_SERVER_WORKERS: "4"
+
+    depends_on:
+      mysql:
+        condition: service_healthy
+  mysql:
+    image: mysql:8.4
+    container_name: blood-donation-mysql
+    restart: unless-stopped
+
+    ports:
+      - "3307:3306"
+
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      TZ: Asia/Yangon
+
+    volumes:
+      - blood_donation_mysql_data:/var/lib/mysql
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "mysqladmin ping -h localhost -u root -p$$MYSQL_ROOT_PASSWORD"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  phpmyadmin:
+    image: phpmyadmin:5.2-apache
+    container_name: blood-donation-phpmyadmin
+    restart: unless-stopped
+
+    ports:
+      - "8081:80"
+
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  blood_donation_mysql_data:
+  blood_donation_vendor:

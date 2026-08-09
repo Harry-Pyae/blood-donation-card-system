@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-labelledby="title">
+  <title id="title">BloodCare staff account</title>
+  <rect width="80" height="80" rx="40" fill="#fff0f2"/>
+  <circle cx="40" cy="31" r="14" fill="#d91f3a"/>
+  <path d="M17 70c2-14 11-22 23-22s21 8 23 22" fill="#d91f3a"/>
+  <circle cx="61" cy="19" r="12" fill="#a70e28"/>
+  <path d="M61 12v14M54 19h14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+</svg>

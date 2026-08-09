@@ -1,0 +1,850 @@
+.bc-twofactor-body {
+    min-height: 100vh;
+    margin: 0;
+    color: var(--bc-admin-ink);
+    background:
+        radial-gradient(circle at 5% 0%, rgba(217, 31, 58, .065), transparent 29rem),
+        var(--bc-admin-canvas);
+    font-family: var(--tblr-font-sans-serif, Inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.bc-twofactor-shell {
+    width: min(1240px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 20px 0 64px;
+}
+
+.bc-twofactor-topbar {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 54px;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--bc-admin-line);
+}
+
+.bc-twofactor-brand {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    color: var(--bc-admin-ink);
+    font-size: 1.12rem;
+    font-weight: 760;
+    text-decoration: none;
+}
+
+.bc-twofactor-brand:hover,
+.bc-twofactor-brand:focus-visible {
+    color: var(--bc-admin-ink);
+    outline: 0;
+    text-decoration: none;
+}
+
+.bc-twofactor-brand > span {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    color: #fff;
+    border-radius: 11px 11px 11px 4px;
+    background: linear-gradient(145deg, #eb3650, var(--bc-admin-red-dark));
+    box-shadow: 0 8px 18px rgba(217, 31, 58, .2);
+    font-size: 1.55rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.bc-twofactor-brand strong {
+    letter-spacing: -.015em;
+}
+
+.bc-twofactor-brand b {
+    color: var(--bc-admin-red);
+}
+
+.bc-twofactor-topbar-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.bc-twofactor-topbar-actions .bc-btn-outline {
+    min-height: 40px;
+    box-shadow: none;
+}
+
+.bc-twofactor-content {
+    display: grid;
+    gap: 20px;
+}
+
+.bc-twofactor-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 18px;
+    align-items: center;
+    padding: 25px 27px;
+    overflow: hidden;
+    border: 1px solid var(--bc-admin-line);
+    border-radius: 18px;
+    background: var(--bc-admin-card);
+    box-shadow: var(--bc-admin-shadow);
+}
+
+.bc-twofactor-hero::before {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--bc-admin-red), var(--bc-admin-red-dark));
+    content: "";
+}
+
+.bc-twofactor-hero::after {
+    position: absolute;
+    top: -80px;
+    right: -40px;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--bc-admin-red) 5%, transparent);
+    content: "";
+    pointer-events: none;
+}
+
+.bc-twofactor-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.bc-twofactor-hero-compact {
+    grid-template-columns: auto minmax(0, 1fr);
+}
+
+.bc-twofactor-hero h1 {
+    margin: 2px 0 6px;
+    color: var(--bc-admin-ink);
+    font-size: clamp(1.45rem, 2.6vw, 2rem);
+    font-weight: 820;
+    letter-spacing: -.025em;
+}
+
+.bc-twofactor-hero p {
+    max-width: 760px;
+    margin: 0;
+    color: var(--bc-admin-muted);
+    font-size: .82rem;
+    line-height: 1.6;
+}
+
+.bc-twofactor-hero .bc-eyebrow {
+    color: var(--bc-admin-red);
+    font-size: .66rem;
+    font-weight: 850;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+}
+
+.bc-twofactor-hero-icon {
+    display: grid;
+    width: 58px;
+    height: 58px;
+    place-items: center;
+    color: #fff;
+    border: 1px solid color-mix(in srgb, var(--bc-admin-red) 80%, #fff 20%);
+    border-radius: 17px;
+    background: linear-gradient(145deg, #e94158, var(--bc-admin-red-dark));
+    box-shadow: 0 10px 22px rgba(217, 31, 58, .2);
+    font-size: 1.8rem;
+}
+
+.bc-twofactor-hero-icon.is-success {
+    color: #fff;
+    border-color: var(--bc-admin-green);
+    background: linear-gradient(145deg, #2ba972, #13794d);
+    box-shadow: 0 10px 22px rgba(22, 138, 89, .18);
+}
+
+.bc-twofactor-status {
+    display: inline-flex;
+    gap: 7px;
+    align-items: center;
+    min-height: 34px;
+    padding: 7px 11px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: .7rem;
+    font-weight: 820;
+    white-space: nowrap;
+}
+
+.bc-twofactor-status.is-enabled {
+    color: #147048;
+    border-color: rgba(22, 138, 89, .2);
+    background: rgba(22, 138, 89, .09);
+}
+
+.bc-twofactor-status.is-disabled {
+    color: #8b5c07;
+    border-color: rgba(194, 123, 9, .22);
+    background: rgba(194, 123, 9, .1);
+}
+
+.bc-twofactor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.bc-twofactor-card {
+    min-width: 0;
+    padding: 22px;
+    color: var(--bc-admin-ink);
+    border: 1px solid var(--bc-admin-line);
+    border-radius: 17px;
+    background: var(--bc-admin-card);
+    box-shadow: var(--bc-admin-shadow);
+}
+
+.bc-twofactor-card-primary,
+.bc-twofactor-info-card {
+    grid-column: 1 / -1;
+}
+
+.bc-twofactor-card-heading {
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.bc-twofactor-card-heading > span {
+    display: grid;
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    color: var(--bc-admin-red);
+    border: 1px solid color-mix(in srgb, var(--bc-admin-red) 13%, transparent);
+    border-radius: 13px;
+    background: var(--bc-admin-red-soft);
+    font-size: 1.35rem;
+}
+
+.bc-twofactor-card-heading > span.is-success {
+    color: var(--bc-admin-green);
+    border-color: color-mix(in srgb, var(--bc-admin-green) 16%, transparent);
+    background: color-mix(in srgb, var(--bc-admin-green) 10%, transparent);
+}
+
+.bc-twofactor-card-heading h2 {
+    margin: 1px 0 4px;
+    color: var(--bc-admin-ink);
+    font-size: .94rem;
+    font-weight: 800;
+}
+
+.bc-twofactor-card-heading p {
+    margin: 0;
+    color: var(--bc-admin-muted);
+    font-size: .72rem;
+    line-height: 1.55;
+}
+
+.bc-twofactor-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin: 5px 0 22px;
+}
+
+.bc-twofactor-steps div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    min-height: 52px;
+    padding: 11px 13px;
+    color: var(--bc-admin-muted);
+    border: 1px solid var(--bc-admin-line);
+    border-radius: 11px;
+    background: var(--bc-admin-surface);
+    font-size: .72rem;
+    line-height: 1.45;
+}
+
+.bc-twofactor-steps b,
+.bc-twofactor-step-badge {
+    display: grid;
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    color: #fff;
+    border-radius: 9px;
+    background: linear-gradient(145deg, #e6364f, var(--bc-admin-red-dark));
+    box-shadow: 0 5px 12px rgba(217, 31, 58, .16);
+    font-size: .7rem;
+    font-weight: 850;
+}
+
+.bc-twofactor-form {
+    display: grid;
+    gap: 12px;
+}
+
+.bc-twofactor-form label {
+    display: grid;
+    gap: 7px;
+    margin: 0;
+    color: var(--bc-admin-ink);
+    font-size: .69rem;
+    font-weight: 760;
+}
+
+.bc-twofactor-form input,
+.bc-twofactor-input input {
+    width: 100%;
+    min-height: 44px;
+    box-sizing: border-box;
+    padding: 9px 12px;
+    color: var(--bc-admin-ink);
+    border: 1px solid var(--bc-admin-line);
+    border-radius: 10px;
+    outline: 0;
+    background: var(--bc-admin-surface);
+    font: inherit;
+    font-size: .76rem;
+    transition: border-color .16s ease, box-shadow .16s ease, background .16s ease;
+}
+
+.bc-twofactor-form input:hover,
+.bc-twofactor-input:hover {
+    border-color: color-mix(in srgb, var(--bc-admin-muted) 44%, var(--bc-admin-line));
+}
+
+.bc-twofactor-form input:focus,
+.bc-twofactor-input:focus-within {
+    border-color: color-mix(in srgb, var(--bc-admin-red) 56%, var(--bc-admin-line));
+    background: var(--bc-admin-card);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--bc-admin-red) 9%, transparent);
+}
+
+.bc-twofactor-input {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    max-width: 560px;
+    padding-left: 12px;
+    border: 1px solid var(--bc-admin-line);
+    border-radius: 10px;
+    background: var(--bc-admin-surface);
+    transition: border-color .16s ease, box-shadow .16s ease, background .16s ease;
+}
+
+.bc-twofactor-input input,
+.bc-twofactor-input input:hover,
+.bc-twofactor-input input:focus {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.bc-twofactor-input i {
+    color: var(--bc-admin-muted);
+    font-size: 1.05rem;
+}
+
+.bc-twofactor-form .btn {
+    width: max-content;
+    margin-top: 3px;
+}
+
+.bc-twofactor-form .bc-btn-primary:hover,
+.bc-twofactor-form .bc-btn-primary:focus-visible {
+    color: #fff;
+    border-color: var(--bc-admin-red-dark);
+    outline: 0;
+    filter: brightness(.97);
+    transform: translateY(-1px);
+}
+
+.bc-twofactor-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin: 0;
+}
+
+.bc-twofactor-summary div {
+    padding: 13px 14px;
+    border: 1px solid var(--bc-admin-line);
+    border-radius: 11px;
+    background: var(--bc-admin-surface);
+}
+
+.bc-twofactor-summary dt {
+    margin-bottom: 5px;
+    color: var(--bc-admin-muted);
+    font-size: .64rem;
+    font-weight: 700;
+}
+
+.bc-twofactor-summary dd {
+    margin: 0;
+    color: var(--bc-admin-ink);
+    font-size: .75rem;
+    font-weight: 820;
+}
+
+.bc-twofactor-danger-card {
+    border-color: color-mix(in srgb, var(--bc-admin-red) 24%, var(--bc-admin-line));
+}
+
+.bc-twofactor-danger-button {
+    display: inline-flex;
+    gap: 7px;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    min-height: 39px;
+    padding: 0 14px;
+    color: var(--bc-admin-red);
+    border: 1px solid color-mix(in srgb, var(--bc-admin-red) 68%, var(--bc-admin-line));
+    border-radius: 10px;
+    background: var(--bc-admin-card);
+    font-size: .78rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: color .16s ease, border-color .16s ease, background .16s ease, transform .16s ease;
+}
+
+.bc-twofactor-danger-button:hover,
+.bc-twofactor-danger-button:focus-visible {
+    color: #fff;
+    border-color: var(--bc-admin-red);
+    outline: 0;
+    background: var(--bc-admin-red);
+    transform: translateY(-1px);
+}
+
+.bc-twofactor-info-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.bc-twofactor-info-card .bc-twofactor-card-heading {
+    margin: 0;
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid var(--bc-admin-line);
+}
+
+.bc-twofactor-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    color: var(--bc-admin-muted);
+    list-style: none;
+}
+
+.bc-twofactor-info-grid li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 11px;
+    align-items: center;
+    min-height: 88px;
+    padding: 16px 20px;
+    font-size: .72rem;
+    line-height: 1.55;
+}
+
+.bc-twofactor-info-grid li + li {
+    border-left: 1px solid var(--bc-admin-line);
+}
+
+.bc-twofactor-info-grid li > i {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    color: var(--bc-admin-red);
+    border-radius: 10px;
+    background: var(--bc-admin-red-soft);
+    font-size: 1.1rem;
+}
+
+.bc-twofactor-setup-grid {
+    display: grid;
+    grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+    gap: 18px;
+}
+
+.bc-twofactor-qr-card,
+.bc-twofactor-confirm-card {
+    text-align: center;
+}
+
+.bc-twofactor-qr-card > h2,
+.bc-twofactor-confirm-card > h2 {
+    margin: 0 0 7px;
+    color: var(--bc-admin-ink);
+    font-size: 1rem;
+    font-weight: 810;
+}
+
+.bc-twofactor-qr-card > p,
+.bc-twofactor-confirm-card > p {
+    color: var(--bc-admin-muted);
+    font-size: .74rem;
+    line-height: 1.55;
+}
+
+.bc-twofactor-qr {
+    width: 238px;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 18px auto;
+    padding: 13px;
+    border: 1px solid var(--bc-admin-line);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(21, 27, 38, .06);
+}
+
+.bc-twofactor-qr svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.bc-twofactor-qr.is-unavailable::after {
+    color: var(--bc-admin-red);
+    content: "QR unavailable";
+}
+
+.bc-twofactor-manual-label {
+    margin-top: 20px;
+    color: var(--bc-admin-muted) !important;
+    font-size: .62rem !important;
+    font-weight: 820;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.bc-twofactor-secret {
+    display: block;
+    padding: 11px 13px;
+    color: var(--bc-admin-ink);
+    border: 1px solid var(--bc-admin-line);
+    border-radius: 10px;
+    background: var(--bc-admin-surface);
+    font-size: .74rem;
+    overflow-wrap: anywhere;
+}
+
+.bc-twofactor-confirm-card .bc-twofactor-step-badge,
+.bc-twofactor-qr-card .bc-twofactor-step-badge {
+    margin: 0 auto 13px;
+}
+
+.bc-twofactor-code-input {
+    max-width: 300px;
+    margin: 0 auto;
+    font-size: 1.7rem !important;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: .25em;
+    text-align: center;
+}
+
+.bc-twofactor-confirm-card .bc-twofactor-form .btn {
+    margin: 8px auto 0;
+}
+
+.bc-twofactor-note {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+    padding: 13px 14px;
+    color: var(--bc-admin-muted);
+    border: 1px solid var(--bc-admin-line);
+    border-radius: 10px;
+    background: var(--bc-admin-surface);
+    font-size: .72rem;
+    line-height: 1.55;
+    text-align: left;
+}
+
+.bc-twofactor-note i {
+    flex: 0 0 auto;
+    color: var(--bc-admin-red);
+    font-size: 1rem;
+}
+
+.bc-twofactor-note p {
+    margin: 0;
+}
+
+.bc-twofactor-field-error {
+    color: var(--bc-admin-red) !important;
+    font-size: .68rem;
+}
+
+.bc-twofactor-recovery-card {
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.bc-twofactor-warning {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding: 14px 15px;
+    color: #78520b;
+    border: 1px solid rgba(194, 123, 9, .22);
+    border-radius: 11px;
+    background: rgba(194, 123, 9, .085);
+    font-size: .73rem;
+    line-height: 1.55;
+}
+
+.bc-twofactor-warning i {
+    flex: 0 0 auto;
+    font-size: 1.25rem;
+}
+
+.bc-twofactor-warning p {
+    margin: 3px 0 0;
+}
+
+.bc-twofactor-recovery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.bc-twofactor-recovery-grid code {
+    padding: 13px;
+    color: var(--bc-admin-ink);
+    border: 1px dashed color-mix(in srgb, var(--bc-admin-muted) 40%, var(--bc-admin-line));
+    border-radius: 9px;
+    background: var(--bc-admin-surface);
+    font-size: .8rem;
+    font-weight: 820;
+    letter-spacing: .08em;
+    text-align: center;
+}
+
+.bc-twofactor-recovery-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.bc-twofactor-challenge-icon {
+    display: grid;
+    width: 58px;
+    height: 58px;
+    margin-bottom: 17px;
+    place-items: center;
+    color: #fff;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #e6364f, var(--bc-admin-red-dark));
+    box-shadow: 0 10px 22px rgba(217, 31, 58, .19);
+    font-size: 1.75rem;
+}
+
+.bc-twofactor-cancel-form {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.bc-twofactor-cancel-form button {
+    padding: 6px 8px;
+    color: var(--bc-admin-muted);
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-size: .72rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.bc-twofactor-cancel-form button:hover,
+.bc-twofactor-cancel-form button:focus-visible {
+    color: var(--bc-admin-red);
+    outline: 0;
+}
+
+.bc-twofactor-challenge-card .bc-login-security {
+    margin-top: 22px;
+}
+
+.bc-twofactor-challenge-card .bc-login-input input {
+    letter-spacing: .05em;
+}
+
+.bc-twofactor-profile-status {
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+    padding: 6px 10px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: .66rem;
+    font-weight: 820;
+    white-space: nowrap;
+}
+
+.bc-twofactor-profile-status.is-enabled {
+    color: #197248;
+    border-color: rgba(22, 138, 89, .2);
+    background: rgba(22, 138, 89, .09);
+}
+
+.bc-twofactor-profile-status.is-disabled {
+    color: #906019;
+    border-color: rgba(194, 123, 9, .2);
+    background: rgba(194, 123, 9, .09);
+}
+
+html[data-bs-theme="dark"] .bc-twofactor-body {
+    background:
+        radial-gradient(circle at 5% 0%, rgba(255, 90, 112, .065), transparent 29rem),
+        var(--bc-admin-canvas);
+}
+
+html[data-bs-theme="dark"] .bc-twofactor-status.is-enabled,
+html[data-bs-theme="dark"] .bc-twofactor-profile-status.is-enabled {
+    color: #7ee0b3;
+    border-color: rgba(84, 210, 154, .24);
+    background: rgba(84, 210, 154, .09);
+}
+
+html[data-bs-theme="dark"] .bc-twofactor-status.is-disabled,
+html[data-bs-theme="dark"] .bc-twofactor-profile-status.is-disabled {
+    color: #f0c46d;
+    border-color: rgba(240, 182, 76, .26);
+    background: rgba(240, 182, 76, .09);
+}
+
+html[data-bs-theme="dark"] .bc-twofactor-warning {
+    color: #f0c46d;
+    border-color: rgba(240, 182, 76, .26);
+    background: rgba(240, 182, 76, .08);
+}
+
+html[data-bs-theme="dark"] .bc-twofactor-danger-button {
+    color: #ff8799;
+    background: var(--bc-admin-card);
+}
+
+html[data-bs-theme="dark"] .bc-twofactor-danger-button:hover,
+html[data-bs-theme="dark"] .bc-twofactor-danger-button:focus-visible {
+    color: #fff;
+    background: var(--bc-admin-red-dark);
+}
+
+html[data-bs-theme="dark"] .bc-twofactor-qr {
+    border-color: rgba(255, 255, 255, .16);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .22);
+}
+
+html[lang="my"] .bc-twofactor-body {
+    font-family: "Myanmar Text", "Pyidaungsu", "Noto Sans Myanmar", "Padauk", var(--tblr-font-sans-serif, Inter), sans-serif;
+    line-height: 1.65;
+}
+
+@media (max-width: 800px) {
+    .bc-twofactor-grid,
+    .bc-twofactor-setup-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bc-twofactor-card-primary,
+    .bc-twofactor-info-card {
+        grid-column: auto;
+    }
+
+    .bc-twofactor-steps,
+    .bc-twofactor-summary,
+    .bc-twofactor-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bc-twofactor-info-grid li + li {
+        border-top: 1px solid var(--bc-admin-line);
+        border-left: 0;
+    }
+
+    .bc-twofactor-info-grid li {
+        min-height: 68px;
+    }
+
+    .bc-twofactor-hero {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .bc-twofactor-status {
+        grid-column: 1 / -1;
+        width: max-content;
+    }
+
+    .bc-twofactor-topbar {
+        align-items: flex-start;
+    }
+
+    .bc-twofactor-topbar-actions {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 520px) {
+    .bc-twofactor-shell {
+        width: min(100% - 20px, 1240px);
+        padding-top: 12px;
+    }
+
+    .bc-twofactor-topbar {
+        display: grid;
+        margin-bottom: 18px;
+    }
+
+    .bc-twofactor-topbar-actions {
+        justify-content: flex-start;
+    }
+
+    .bc-twofactor-hero,
+    .bc-twofactor-card {
+        padding: 18px;
+    }
+
+    .bc-twofactor-info-card {
+        padding: 0;
+    }
+
+    .bc-twofactor-hero-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .bc-twofactor-recovery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bc-twofactor-recovery-actions {
+        flex-direction: column;
+    }
+
+    .bc-twofactor-recovery-actions .btn {
+        width: 100%;
+    }
+}

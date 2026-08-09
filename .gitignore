@@ -1,0 +1,27 @@
+# Environment files and secrets
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.*.example
+
+# Dependencies
+**/vendor/
+**/node_modules/
+
+# Runtime and test artifacts
+*.log
+.phpunit.result.cache
+.phpunit.cache/
+
+# Local archives and database exports
+*.zip
+*.sql
+*.sqlite
+backups/
+backend - backup/
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
