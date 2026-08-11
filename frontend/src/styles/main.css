@@ -1,0 +1,112 @@
+/* ---------------------------------------------------------------------------
+   Vuetify 4 removed the global CSS reset, so browser-default margins return on
+   headings and paragraphs. This restores only the spacing reset this app
+   relies on. It sits inside Vuetify's own cascade layer so it cannot outrank
+   component styles.
+   Ref: Vuetify 4 upgrade guide, "CSS reset".
+   --------------------------------------------------------------------------- */
+@layer vuetify-core.reset {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin: 0;
+  }
+
+  ul,
+  ol,
+  figure {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Type system
+   --------------------------------------------------------------------------- */
+:root {
+  --bc-font-body: 'Noto Sans', 'Noto Sans Myanmar', system-ui, sans-serif;
+  --bc-font-display: 'Noto Sans Display', 'Noto Sans', 'Noto Sans Myanmar',
+    system-ui, sans-serif;
+
+  /* Larger base than the Vuetify default, per the UI/UX contract's
+     "large, highly readable text" requirement. */
+  font-size: 17px;
+}
+
+/* When Myanmar is active, put the Myanmar cut first so it wins for every
+   glyph it covers, and fall back to Noto Sans for Latin names and numerals. */
+html[lang='my'] {
+  --bc-font-body: 'Noto Sans Myanmar', 'Noto Sans', system-ui, sans-serif;
+  --bc-font-display: 'Noto Sans Myanmar', 'Noto Sans Display', 'Noto Sans',
+    system-ui, sans-serif;
+}
+
+@media (max-width: 599px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+body,
+.v-application {
+  font-family: var(--bc-font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+.bc-display {
+  font-family: var(--bc-font-display);
+  font-optical-sizing: auto;
+}
+
+/* ---------------------------------------------------------------------------
+   Myanmar script handling
+   --------------------------------------------------------------------------- */
+
+/* Myanmar needs a taller line box, and must never be broken mid-cluster.
+   overflow-wrap: anywhere would split Burmese syllables incorrectly, so it is
+   deliberately not used anywhere in this application. */
+/* Scoped to page content only. Applying this to <body> also stretched the
+   app bar's line box, which made the brand shift vertically on every
+   language change. */
+html[lang='my'] .v-main {
+  line-height: 1.9;
+}
+
+html[lang='my'] .v-main h1,
+html[lang='my'] .v-main h2,
+html[lang='my'] .v-main h3 {
+  line-height: 1.65;
+}
+
+/* Tracking and uppercasing are Latin typographic devices. Applied to Myanmar
+   they visually separate marks from their base consonant and change nothing
+   about case, so both are switched off for this script. */
+html[lang='my'] .bc-tracked {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+body {
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.d-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
